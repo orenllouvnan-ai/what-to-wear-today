@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#4a90e2">
+  <meta name="description" content="המלצה מה ללבוש היום לפי מזג האוויר">
+  <title>מה ללבוש היום?</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="מה ללבוש?">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="top">
+      <h1>מה ללבוש היום?</h1>
+      <button id="settingsBtn" class="icon-btn" aria-label="הגדרות">⚙️</button>
+    </header>
+
+    <form id="searchForm" class="search" autocomplete="off">
+      <input id="cityInput" type="search" placeholder="חפש עיר (למשל: תל אביב)" aria-label="שם עיר">
+      <button type="submit" class="btn">חפש</button>
+      <button type="button" id="gpsBtn" class="btn btn-ghost" aria-label="המיקום שלי">📍</button>
+    </form>
+
+    <section id="status" class="status" aria-live="polite"></section>
+
+    <section id="result" class="card hidden">
+      <div class="place">
+        <span id="cityName"></span>
+        <span id="updated" class="muted"></span>
+      </div>
+      <div class="weather">
+        <span id="temp" class="temp"></span>
+        <div>
+          <div id="desc"></div>
+          <div id="details" class="muted"></div>
+        </div>
+      </div>
+      <div id="recommendations" class="recs"></div>
+    </section>
+  </main>
+
+  <dialog id="settingsDialog">
+    <form method="dialog" id="settingsForm">
+      <h2>הגדרות</h2>
+      <label for="apiKeyInput">מפתח API של OpenWeatherMap</label>
+      <input id="apiKeyInput" type="text" dir="ltr" spellcheck="false" placeholder="הדבק כאן את המפתח">
+      <p class="muted small">
+        מקבלים מפתח חינם בהרשמה ל-<a href="https://home.openweathermap.org/api_keys" target="_blank" rel="noopener">openweathermap.org</a>.
+        המפתח נשמר רק במכשיר הזה. מפתח חדש עשוי לקחת עד שעתיים להיות פעיל.
+      </p>
+      <div class="dialog-actions">
+        <button value="cancel" class="btn btn-ghost" formnovalidate>ביטול</button>
+        <button value="save" class="btn">שמור</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
